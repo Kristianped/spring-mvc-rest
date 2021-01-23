@@ -1,4 +1,4 @@
-package no.kristianped.springmvcrest;
+package no.kristianped;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
