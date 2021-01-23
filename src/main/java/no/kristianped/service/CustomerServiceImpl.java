@@ -10,7 +10,6 @@ import no.kristianped.repositories.CustomerRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -33,12 +32,12 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public CustomerDTO getCustomerById(Long id) {
-        Optional<Customer> customerOptional = customerRepository.findById(id);
+        return customerRepository.findById(id).map(customer -> {
+            CustomerDTO customerDTO = customerMapper.customerToCustomerDTO(customer);
+            customerDTO.setCustomerUrl("/api/v1/customers/" + id);
 
-        if (!customerOptional.isPresent())
-            throw new RuntimeException("Could not find customer with ID: " + id);
-
-        return customerMapper.customerToCustomerDTO(customerOptional.get());
+            return customerDTO;
+        }).orElseThrow(RuntimeException::new);
     }
 
     @Override
@@ -64,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public CustomerDTO patchCustomers(Long id, CustomerDTO customer) {
+    public CustomerDTO patchCustomer(Long id, CustomerDTO customer) {
         return customerRepository.findById(id).map(customer1 -> {
             if (customer.getFirstname() != null)
                 customer1.setFirstname(customer.getFirstname());
@@ -72,7 +71,15 @@ public class CustomerServiceImpl implements CustomerService {
             if (customer.getLastname() != null)
                 customer1.setLastname(customer.getLastname());
 
-            return customerMapper.customerToCustomerDTO(customerRepository.save(customer1));
+            CustomerDTO returnDTO = customerMapper.customerToCustomerDTO(customerRepository.save(customer1));
+            returnDTO.setCustomerUrl("/api/v1/customers/" + id);
+
+            return returnDTO;
         }).orElseThrow(RuntimeException::new);
+    }
+
+    @Override
+    public void deleteCustomerById(Long id) {
+        customerRepository.deleteById(id);
     }
 }

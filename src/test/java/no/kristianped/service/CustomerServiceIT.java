@@ -48,7 +48,7 @@ public class CustomerServiceIT {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setFirstname(updatedName);
 
-        customerService.patchCustomers(id, customerDTO);
+        customerService.patchCustomer(id, customerDTO);
 
         // when
         Customer updatedCustomer = customerRepository.findById(id).get();
@@ -73,7 +73,7 @@ public class CustomerServiceIT {
         CustomerDTO customerDTO = new CustomerDTO();
         customerDTO.setLastname(updatedName);
 
-        customerService.patchCustomers(id, customerDTO);
+        customerService.patchCustomer(id, customerDTO);
 
         // when
         Customer updatedCustomer = customerRepository.findById(id).get();
