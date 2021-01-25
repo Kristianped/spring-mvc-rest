@@ -64,7 +64,9 @@ class VendorControllerTest {
         when(vendorService.getAllVendors()).thenReturn(List.of(vendor1, vendor2));
 
         // then
-        mockMvc.perform(get(BASE_URL).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get(BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.vendors", hasSize(2)));
     }
@@ -80,7 +82,9 @@ class VendorControllerTest {
         when(vendorService.getVendorById(anyLong())).thenReturn(vendor1);
 
         // then
-        mockMvc.perform(get(BASE_URL + ID1).contentType(MediaType.APPLICATION_JSON))
+        mockMvc.perform(get(BASE_URL + ID1)
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(NAME1)));
     }
@@ -100,6 +104,7 @@ class VendorControllerTest {
 
         // then
         mockMvc.perform(post(BASE_URL)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isCreated())
@@ -122,6 +127,7 @@ class VendorControllerTest {
 
         // then
         mockMvc.perform(put(BASE_URL + ID1)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isOk())
@@ -144,6 +150,7 @@ class VendorControllerTest {
 
         // then
         mockMvc.perform(patch(BASE_URL + ID1)
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isOk())

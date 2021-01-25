@@ -57,6 +57,7 @@ class CategoryControllerTest {
         when(categoryService.getAllCategories()).thenReturn(categories);
 
         mockMvc.perform(get("/api/v1/categories/")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.categories", Matchers.hasSize(2)));
@@ -72,7 +73,8 @@ class CategoryControllerTest {
         when(categoryService.getCategoryByName(anyString())).thenReturn(cat1);
 
         mockMvc.perform(get("/api/v1/categories/Kristian")
-        .contentType(MediaType.APPLICATION_JSON))
+                .accept(MediaType.APPLICATION_JSON)
+                .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo("Kristian")));
     }
@@ -82,6 +84,7 @@ class CategoryControllerTest {
         when(categoryService.getCategoryByName(anyString())).thenThrow(ResourceNotFoundException.class);
 
         mockMvc.perform(get("/api/v1/categories/Kristian")
+                .accept(MediaType.APPLICATION_JSON)
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isNotFound());
     }
