@@ -1,4 +1,4 @@
-package no.kristianped.controller;
+package no.kristianped.controller.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 

@@ -5,8 +5,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import no.kristianped.domain.Category;
 import no.kristianped.domain.Customer;
+import no.kristianped.domain.Vendor;
 import no.kristianped.repositories.CategoryRepository;
 import no.kristianped.repositories.CustomerRepository;
+import no.kristianped.repositories.VendorRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Controller;
 
@@ -19,11 +21,13 @@ public class Bootstrap implements CommandLineRunner {
 
     CategoryRepository categoryRepository;
     CustomerRepository customerRepository;
+    VendorRepository vendorRepository;
 
     @Override
     public void run(String... args) throws Exception {
         saveFruits();
         saveCustomers();
+        saveVendors();
     }
 
     private void saveFruits() {
@@ -77,5 +81,15 @@ public class Bootstrap implements CommandLineRunner {
         hans.setLastname("Müller");
 
         customerRepository.saveAll(List.of(alice, max, manni, klaus, klaus2, hans));
+    }
+
+    private void saveVendors() {
+        Vendor vendor1 = new Vendor();
+        vendor1.setName("Vendor 1");
+
+        Vendor vendor2 = new Vendor();
+        vendor2.setName("Vendor 2");
+
+        vendorRepository.saveAll(List.of(vendor1, vendor2));
     }
 }

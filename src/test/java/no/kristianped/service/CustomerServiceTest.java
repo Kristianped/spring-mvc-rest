@@ -2,6 +2,7 @@ package no.kristianped.service;
 
 import no.kristianped.api.v1.mapper.CustomerMapper;
 import no.kristianped.api.v1.model.CustomerDTO;
+import no.kristianped.controller.v1.CustomerController;
 import no.kristianped.domain.Customer;
 import no.kristianped.repositories.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -29,6 +30,8 @@ class CustomerServiceTest {
 
     CustomerServiceImpl customerService;
 
+    static final String BASE_URL = CustomerController.BASE_URL + "/";
+
     @BeforeEach
     void setUp() {
         customerService = new CustomerServiceImpl(CustomerMapper.INSTANCE, customerRepository);
@@ -49,7 +52,7 @@ class CustomerServiceTest {
 
         // then
         assertEquals(1, customers.size());
-        assertEquals("/api/v1/customers/2", customers.get(0).getCustomerUrl());
+        assertEquals(BASE_URL + ID, customers.get(0).getCustomerUrl());
     }
 
     @Test
@@ -87,7 +90,7 @@ class CustomerServiceTest {
         assertNotNull(customerDTO);
         assertEquals(customerDTO.getFirstname(), FIRSTNAME);
         assertEquals(customerDTO.getLastname(), LASTNAME);
-        assertEquals("/api/v1/customers/" + ID, customerDTO.getCustomerUrl());
+        assertEquals(BASE_URL + ID, customerDTO.getCustomerUrl());
     }
 
     @Test
@@ -111,7 +114,7 @@ class CustomerServiceTest {
         assertNotNull(savedDto);
         assertEquals(savedDto.getFirstname(), FIRSTNAME);
         assertEquals(savedDto.getLastname(), LASTNAME);
-        assertEquals("/api/v1/customers/" + ID, savedDto.getCustomerUrl());
+        assertEquals(BASE_URL + ID, savedDto.getCustomerUrl());
     }
 
     @Test

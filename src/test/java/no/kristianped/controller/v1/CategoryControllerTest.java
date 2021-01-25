@@ -1,6 +1,8 @@
-package no.kristianped.controller;
+package no.kristianped.controller.v1;
 
 import no.kristianped.api.v1.model.CategoryDTO;
+import no.kristianped.controller.RestResponseEntityExceptionHandler;
+import no.kristianped.exceptions.ResourceNotFoundException;
 import no.kristianped.service.CategoryService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,7 +37,9 @@ class CategoryControllerTest {
 
     @BeforeEach
     void setup() {
-        mockMvc = MockMvcBuilders.standaloneSetup(categoryController).build();
+        mockMvc = MockMvcBuilders.standaloneSetup(categoryController)
+                .setControllerAdvice(new RestResponseEntityExceptionHandler())
+                .build();
     }
 
     @Test
@@ -71,5 +75,14 @@ class CategoryControllerTest {
         .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo("Kristian")));
+    }
+
+    @Test
+    void getNameNotFound() throws Exception {
+        when(categoryService.getCategoryByName(anyString())).thenThrow(ResourceNotFoundException.class);
+
+        mockMvc.perform(get("/api/v1/categories/Kristian")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isNotFound());
     }
 }
