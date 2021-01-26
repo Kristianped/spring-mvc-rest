@@ -1,5 +1,6 @@
 package no.kristianped.api.v1.mapper;
 
+import no.kristianped.api.mapper.CategoryMapper;
 import no.kristianped.domain.Category;
 import no.kristianped.model.CategoryDTO;
 import org.junit.jupiter.api.Test;

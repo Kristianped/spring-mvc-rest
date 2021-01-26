@@ -1,5 +1,6 @@
 package no.kristianped.api.v1.mapper;
 
+import no.kristianped.api.mapper.VendorMapper;
 import no.kristianped.domain.Vendor;
 import no.kristianped.model.VendorDTO;
 import org.junit.jupiter.api.Test;

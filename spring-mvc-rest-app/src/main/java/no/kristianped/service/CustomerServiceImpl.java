@@ -3,7 +3,7 @@ package no.kristianped.service;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import no.kristianped.api.v1.mapper.CustomerMapper;
+import no.kristianped.api.mapper.CustomerMapper;
 import no.kristianped.controller.v1.CustomerController;
 import no.kristianped.domain.Customer;
 import no.kristianped.exceptions.ResourceNotFoundException;

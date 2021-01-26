@@ -1,6 +1,6 @@
 package no.kristianped.service;
 
-import no.kristianped.api.v1.mapper.CategoryMapper;
+import no.kristianped.api.mapper.CategoryMapper;
 import no.kristianped.domain.Category;
 import no.kristianped.model.CategoryDTO;
 import no.kristianped.repositories.CategoryRepository;

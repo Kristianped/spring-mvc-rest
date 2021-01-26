@@ -1,6 +1,6 @@
 package no.kristianped.service;
 
-import no.kristianped.api.v1.mapper.CustomerMapper;
+import no.kristianped.api.mapper.CustomerMapper;
 import no.kristianped.bootstrap.Bootstrap;
 import no.kristianped.domain.Customer;
 import no.kristianped.model.CustomerDTO;

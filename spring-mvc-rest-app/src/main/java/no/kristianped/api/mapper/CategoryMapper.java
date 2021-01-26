@@ -1,4 +1,4 @@
-package no.kristianped.api.v1.mapper;
+package no.kristianped.api.mapper;
 
 import no.kristianped.domain.Category;
 import no.kristianped.model.CategoryDTO;
