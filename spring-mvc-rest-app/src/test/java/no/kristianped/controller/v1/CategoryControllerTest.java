@@ -1,8 +1,8 @@
 package no.kristianped.controller.v1;
 
-import no.kristianped.api.v1.model.CategoryDTO;
 import no.kristianped.controller.RestResponseEntityExceptionHandler;
 import no.kristianped.exceptions.ResourceNotFoundException;
+import no.kristianped.model.CategoryDTO;
 import no.kristianped.service.CategoryService;
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeEach;

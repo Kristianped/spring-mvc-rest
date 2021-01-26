@@ -5,8 +5,8 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import no.kristianped.api.v1.model.VendorDTO;
-import no.kristianped.api.v1.model.VendorListDTO;
+import no.kristianped.model.VendorDTO;
+import no.kristianped.model.VendorListDTO;
 import no.kristianped.service.VendorService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,10 @@ public class VendorController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public VendorListDTO getAllVendors() {
-        return new VendorListDTO(vendorService.getAllVendors());
+        VendorListDTO list = new VendorListDTO();
+        list.getVendors().addAll(vendorService.getAllVendors());
+
+        return list;
     }
 
     @ApiOperation(value = "This will get vendor based on ID", notes = "This is some note about the API.", httpMethod = "GET")

@@ -4,10 +4,10 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import no.kristianped.api.v1.mapper.VendorMapper;
-import no.kristianped.api.v1.model.VendorDTO;
 import no.kristianped.controller.v1.VendorController;
 import no.kristianped.domain.Vendor;
 import no.kristianped.exceptions.ResourceNotFoundException;
+import no.kristianped.model.VendorDTO;
 import no.kristianped.repositories.VendorRepository;
 import org.springframework.stereotype.Service;
 

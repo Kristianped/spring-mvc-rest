@@ -1,6 +1,6 @@
 package no.kristianped.service;
 
-import no.kristianped.api.v1.model.VendorDTO;
+import no.kristianped.model.VendorDTO;
 
 import java.util.List;
 

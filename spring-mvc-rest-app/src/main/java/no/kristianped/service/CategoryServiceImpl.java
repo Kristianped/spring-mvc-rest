@@ -4,7 +4,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import no.kristianped.api.v1.mapper.CategoryMapper;
-import no.kristianped.api.v1.model.CategoryDTO;
+import no.kristianped.model.CategoryDTO;
 import no.kristianped.repositories.CategoryRepository;
 import org.springframework.stereotype.Service;
 

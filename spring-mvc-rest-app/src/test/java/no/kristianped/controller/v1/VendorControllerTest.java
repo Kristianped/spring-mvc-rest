@@ -1,8 +1,8 @@
 package no.kristianped.controller.v1;
 
-import no.kristianped.api.v1.model.VendorDTO;
 import no.kristianped.controller.RestResponseEntityExceptionHandler;
 import no.kristianped.exceptions.ResourceNotFoundException;
+import no.kristianped.model.VendorDTO;
 import no.kristianped.service.VendorService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -109,7 +109,7 @@ class VendorControllerTest {
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name", equalTo(NAME1)))
-                .andExpect(jsonPath("$.vendor_url", equalTo(BASE_URL + ID1)));
+                .andExpect(jsonPath("$.vendorUrl", equalTo(BASE_URL + ID1)));
     }
 
     @Test
@@ -132,7 +132,7 @@ class VendorControllerTest {
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(NAME1)))
-                .andExpect(jsonPath("$.vendor_url", equalTo(BASE_URL + ID1)));
+                .andExpect(jsonPath("$.vendorUrl", equalTo(BASE_URL + ID1)));
     }
 
     @Test
@@ -155,7 +155,7 @@ class VendorControllerTest {
                 .content(AbstractRestControllerTest.asJsonString(vendor1)))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(NAME1)))
-                .andExpect(jsonPath("$.vendor_url", equalTo(BASE_URL + ID1)));
+                .andExpect(jsonPath("$.vendorUrl", equalTo(BASE_URL + ID1)));
     }
 
     @Test

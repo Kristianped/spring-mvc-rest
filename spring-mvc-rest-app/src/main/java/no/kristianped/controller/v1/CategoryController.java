@@ -3,8 +3,8 @@ package no.kristianped.controller.v1;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import no.kristianped.api.v1.model.CategoryDTO;
-import no.kristianped.api.v1.model.CategoryListDTO;
+import no.kristianped.model.CategoryDTO;
+import no.kristianped.model.CategoryListDTO;
 import no.kristianped.service.CategoryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -22,7 +22,10 @@ public class CategoryController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CategoryListDTO getAllCategories() {
-        return new CategoryListDTO(categoryService.getAllCategories());
+        CategoryListDTO list = new CategoryListDTO();
+        list.getCategories().addAll(categoryService.getAllCategories());
+
+        return list;
     }
 
     @GetMapping("{name}")

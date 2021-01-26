@@ -1,9 +1,9 @@
 package no.kristianped.service;
 
 import no.kristianped.api.v1.mapper.VendorMapper;
-import no.kristianped.api.v1.model.VendorDTO;
 import no.kristianped.bootstrap.Bootstrap;
 import no.kristianped.domain.Vendor;
+import no.kristianped.model.VendorDTO;
 import no.kristianped.repositories.CategoryRepository;
 import no.kristianped.repositories.CustomerRepository;
 import no.kristianped.repositories.VendorRepository;
