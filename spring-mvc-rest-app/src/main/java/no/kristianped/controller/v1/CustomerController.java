@@ -5,9 +5,9 @@ import io.swagger.annotations.ApiOperation;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
-import no.kristianped.api.v1.model.CustomerDTO;
-import no.kristianped.api.v1.model.CustomerListDTO;
 import no.kristianped.api.v1.model.VendorDTO;
+import no.kristianped.model.CustomerDTO;
+import no.kristianped.model.CustomerListDTO;
 import no.kristianped.service.CustomerService;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -27,7 +27,10 @@ public class CustomerController {
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
     public CustomerListDTO getAllCustomers() {
-        return new CustomerListDTO(customerService.getAllCustomers());
+        CustomerListDTO list = new CustomerListDTO();
+        list.getCustomers().addAll(customerService.getAllCustomers());
+
+        return list;
     }
 
 

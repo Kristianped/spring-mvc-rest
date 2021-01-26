@@ -1,9 +1,9 @@
 package no.kristianped.service;
 
 import no.kristianped.api.v1.mapper.CustomerMapper;
-import no.kristianped.api.v1.model.CustomerDTO;
 import no.kristianped.controller.v1.CustomerController;
 import no.kristianped.domain.Customer;
+import no.kristianped.model.CustomerDTO;
 import no.kristianped.repositories.CustomerRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

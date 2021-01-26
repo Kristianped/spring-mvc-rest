@@ -1,7 +1,7 @@
 package no.kristianped.api.v1.mapper;
 
-import no.kristianped.api.v1.model.CustomerDTO;
 import no.kristianped.domain.Customer;
+import no.kristianped.model.CustomerDTO;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;

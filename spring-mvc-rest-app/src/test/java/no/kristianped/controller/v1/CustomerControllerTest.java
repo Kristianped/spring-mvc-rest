@@ -1,8 +1,8 @@
 package no.kristianped.controller.v1;
 
-import no.kristianped.api.v1.model.CustomerDTO;
 import no.kristianped.controller.RestResponseEntityExceptionHandler;
 import no.kristianped.exceptions.ResourceNotFoundException;
+import no.kristianped.model.CustomerDTO;
 import no.kristianped.service.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -111,7 +111,7 @@ class CustomerControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.firstname", equalTo("Michael")))
                 .andExpect(jsonPath("$.lastname", equalTo("Weston")))
-                .andExpect(jsonPath("$.customer_url", equalTo("/api/v1/customers/1")));
+                .andExpect(jsonPath("$.customerUrl", equalTo("/api/v1/customers/1")));
     }
 
     @Test
@@ -136,7 +136,7 @@ class CustomerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstname", equalTo("Michael")))
                 .andExpect(jsonPath("$.lastname", equalTo("Weston")))
-                .andExpect(jsonPath("$.customer_url", equalTo("/api/v1/customers/1")));
+                .andExpect(jsonPath("$.customerUrl", equalTo("/api/v1/customers/1")));
     }
 
     @Test
@@ -160,7 +160,7 @@ class CustomerControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.firstname", equalTo("Michael")))
                 .andExpect(jsonPath("$.lastname", equalTo("Weston")))
-                .andExpect(jsonPath("$.customer_url", equalTo("/api/v1/customers/1")));
+                .andExpect(jsonPath("$.customerUrl", equalTo("/api/v1/customers/1")));
     }
 
     @Test
